@@ -1,5 +1,5 @@
 name: Pipeline-Run-DogCat-1GPU
-workspace: Cyrill
+workspace: Tyler
 project: pipeline-dogs-and-cats
 data:
     pachyderm:

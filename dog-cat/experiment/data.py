@@ -37,6 +37,9 @@ class CatDogDataset(Dataset):
 
 
 # ======================================================================================================================
+
+
+
 def safe_open_wb(path):
     ''' Open "path" for writing, creating any parent directories as needed.
     '''
@@ -65,9 +68,8 @@ def download_pach_repo(
     files = []
     if previous_commit is not None:
         for diff in client.diff_file(
-            Commit(repo=repo, id=branch, project=project),
+            Commit(repo=repo, id=branch, project=project), "/",
             Commit(repo=repo, id=previous_commit, project=project),
-            "/",
         ):
             src_path = diff.new_file.file.path
             des_path = os.path.join(root, src_path[1:])
@@ -76,9 +78,6 @@ def download_pach_repo(
             if diff.new_file.file_type == FileType.FILE:
                 if src_path != "":
                     files.append((src_path, des_path))
-            elif diff.new_file.file_type == FileType.DIR:
-                print(f"Creating dir : {des_path}")
-                os.makedirs(des_path, exist_ok=True)
     else:
         for file_info in client.glob_file(
             Commit(repo=repo, id=branch, project=project), "/*/*"
@@ -105,3 +104,4 @@ def download_pach_repo(
 
 
 # ========================================================================================================
+

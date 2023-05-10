@@ -75,7 +75,7 @@ def download_pach_repo(
                 print(f"Creating dir : {des_path}")
                 os.makedirs(des_path, exist_ok=True)
     else:
-        for file_info in client.glob_fiile(
+        for file_info in client.glob_file(
             Commit(repo=repo, id=branch, project=project), "/*/*"
         ):
             src_path = file_info.file.path

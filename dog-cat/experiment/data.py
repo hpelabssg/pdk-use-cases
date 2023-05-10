@@ -37,6 +37,11 @@ class CatDogDataset(Dataset):
 
 
 # ======================================================================================================================
+def safe_open_w(path):
+    ''' Open "path" for writing, creating any parent directories as needed.
+    '''
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    return open(path, 'w')
 
 
 def download_pach_repo(
@@ -85,9 +90,6 @@ def download_pach_repo(
             if file_info.file_type == FileType.FILE:
                 if src_path != "":
                     files.append((src_path, des_path))
-            elif file_info.file_type == FileType.DIR:
-                print(f"Creating dir : {des_path}")
-                os.makedirs(des_path, exist_ok=True)
 
     for src_path, des_path in files:
         src_file = client.get_file(
@@ -95,7 +97,7 @@ def download_pach_repo(
         )
         print(f"Downloading {src_path} to {des_path}")
 
-        with open(des_path, "wb") as dest_file:
+        with safe_open_w(des_path, "wb") as dest_file:
             shutil.copyfileobj(src_file, dest_file)
 
     print("Download operation ended")
@@ -103,7 +105,3 @@ def download_pach_repo(
 
 
 # ========================================================================================================
-
-    src_path = file_info.file.path
-    des_path = os.path.join(root, src_path[1:])
-    print(f"Got src='{src_path}', des='{des_path}'")

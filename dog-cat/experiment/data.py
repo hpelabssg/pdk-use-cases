@@ -37,11 +37,11 @@ class CatDogDataset(Dataset):
 
 
 # ======================================================================================================================
-def safe_open_w(path):
+def safe_open_wb(path):
     ''' Open "path" for writing, creating any parent directories as needed.
     '''
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    return open(path, 'w')
+    return open(path, 'wb')
 
 
 def download_pach_repo(
@@ -97,7 +97,7 @@ def download_pach_repo(
         )
         print(f"Downloading {src_path} to {des_path}")
 
-        with safe_open_w(des_path, "wb") as dest_file:
+        with safe_open_wb(des_path) as dest_file:
             shutil.copyfileobj(src_file, dest_file)
 
     print("Download operation ended")

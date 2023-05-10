@@ -75,8 +75,8 @@ def download_pach_repo(
                 print(f"Creating dir : {des_path}")
                 os.makedirs(des_path, exist_ok=True)
     else:
-        for file_info in client.list_file(
-            Commit(repo=repo, id=branch, project=project), "/"
+        for file_info in client.glob_fiile(
+            Commit(repo=repo, id=branch, project=project), "/*/*"
         ):
             src_path = file_info.file.path
             des_path = os.path.join(root, src_path[1:])
@@ -103,3 +103,7 @@ def download_pach_repo(
 
 
 # ========================================================================================================
+
+    src_path = file_info.file.path
+    des_path = os.path.join(root, src_path[1:])
+    print(f"Got src='{src_path}', des='{des_path}'")

@@ -80,7 +80,7 @@ def download_pach_repo(
                     files.append((src_path, des_path))
     else:
         for file_info in client.walk_file(
-            Commit(repo=repo, id=branch, project=project)):
+            Commit(repo=repo, id=branch, project=project), "/"):
             src_path = file_info.file.path
             des_path = os.path.join(root, src_path[1:])
             print(f"Got src='{src_path}', des='{des_path}'")
@@ -103,3 +103,18 @@ def download_pach_repo(
 
 
 # ========================================================================================================
+
+oldcomm = {"repo": "dogs-and-cats", "id": "3abf14423d804d89ad2b6a1ee79509b8", "project": "PDK"}
+newcomm = {"repo": "dogs-and-cats", "id": "dc85b81d3f0c4704afa79be763639a10", "project": "PDK"}
+for diff in client.diff_file(
+            Commit(repo=repo, id=branch, project=project), "", Commit(repo=repo, id=previous_commit, project=project),
+        ):
+    print(diff)
+
+
+oldcomm = {"repo": "dogs-and-cats", "id": "3ef72439e9284a7ca27ce4a4367137ec", "project": "PDK"}
+newcomm = {"repo": "dogs-and-cats", "id": "b8d6f1e465c34b6b8f0a5e086676bdc4", "project": "PDK"}
+for diff in client._stubs.DiffFileAll()(newcomm, "", oldcomm):
+    src_path = diff.new_file.file.path
+    des_path = os.path.join(root, src_path[1:])
+    print(f"Got src='{src_path}', des='{des_path}'")

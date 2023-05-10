@@ -147,6 +147,7 @@ def execute_experiment(
     try:
         if checkpoint is None:
             parent_id = None
+            configfile["data"]["pachyderm"]["previous_commit"] = None
             exp = client.create_experiment(configfile, code_path)
         else:
             parent_id = checkpoint.training.experiment_id

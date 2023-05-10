@@ -79,9 +79,8 @@ def download_pach_repo(
                 if src_path != "":
                     files.append((src_path, des_path))
     else:
-        for file_info in client.glob_file(
-            Commit(repo=repo, id=branch, project=project), "/**"
-        ):
+        for file_info in client.walk_file(
+            Commit(repo=repo, id=branch, project=project)):
             src_path = file_info.file.path
             des_path = os.path.join(root, src_path[1:])
             print(f"Got src='{src_path}', des='{des_path}'")

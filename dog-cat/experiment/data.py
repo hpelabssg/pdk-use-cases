@@ -80,7 +80,7 @@ def download_pach_repo(
                     files.append((src_path, des_path))
     else:
         for file_info in client.glob_file(
-            Commit(repo=repo, id=branch, project=project), "/*/*"
+            Commit(repo=repo, id=branch, project=project), "/**"
         ):
             src_path = file_info.file.path
             des_path = os.path.join(root, src_path[1:])
@@ -104,4 +104,3 @@ def download_pach_repo(
 
 
 # ========================================================================================================
-

@@ -16,9 +16,9 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python deploy.py --deployment-name dogcat-deploy --gcs-model-bucket tyler-model-serving"
+      "python deploy.py --deployment-name dogcat-deploy --cloud-model-bucket tyler-model-serving --cloud-model-host  gcp"
     ],
-    "image": "vmtyler/pdk:deploy_0.0.2",
+    "image": "vmtyler/pdk:deploy_0.0.4",
     "secrets": [
       {
         "name": "pipeline-secret",

@@ -1,6 +1,8 @@
 name: Pipeline-Run-DogCat-1GPU
 workspace: hpelabssg
 project: pipeline-dogs-and-cats
+profiling:
+  enabled: true
 data:
     pachyderm:
         host:

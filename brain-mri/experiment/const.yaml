@@ -1,6 +1,8 @@
 name: Pipeline-Run-Brain-MRI-1GPU
 workspace: hpelabssg
 project: pipeline-brain-mri
+profiling:
+  enabled: true
 data:
   data_dir: "/data"
   repo: "mateuszbuda/brain-segmentation-pytorch"
@@ -35,5 +37,3 @@ resources:
   slots_per_trial: 1
 max_restarts: 0
 entrypoint: model_def:MRIUnetTrial
-profiling:
-  enabled: True

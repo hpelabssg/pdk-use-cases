@@ -1,6 +1,8 @@
 name: Pipeline-Run-Finbert-1GPU
 workspace: hpelabssg
 project: pipeline-finbert
+profiling:
+    enabled: true
 hyperparameters:
     max_seq_length: 64
     global_batch_size: 64
@@ -35,5 +37,3 @@ data:
         branch:
         token:
 entrypoint: model_def:FinBERTPyTorch
-profiling:
-    enabled: true

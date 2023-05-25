@@ -16,7 +16,7 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python deploy.py --deployment-name dogcat-deploy --cloud-model-bucket tyler-model-serving --cloud-model-host  gcp"
+      "python deploy.py --deployment-name dogcat-deploy --cloud-model-bucket kserve-models --cloud-model-host s3"
     ],
     "image": "hpelabssg/pdk:deploy_0.0.1",
     "secrets": [
@@ -61,5 +61,6 @@
         "env_var": "S3_SECURE"
       }	  
     ]
-  }
+  },
+  "pod_patch": "[{\"op\": \"add\",\"path\": \"/volumes/-\",\"value\": {\"name\": \"det-checkpoints\",\"hostpath\": {\"path\": \"/mnt/mapr_nfs/determined/det_checkpoints\",\"type\": \"Directory\"}}}, {\"op\": \"add\",\"path\": \"/containers/0/volumeMounts/-\",\"value\": {\"mountPath\": \"/determined_shared_fs\",\"name\": \"det-checkpoints\"}}]",
 }

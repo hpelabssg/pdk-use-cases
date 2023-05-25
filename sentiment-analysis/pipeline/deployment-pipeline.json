@@ -54,13 +54,8 @@
         "name": "pachyderm-determined-pipeline-secret",
         "key": "s3_secret_key",
         "env_var": "S3_SECRET_KEY"
-      },
-      {
-        "name": "pachyderm-determined-pipeline-secret",
-        "key": "s3_secure",
-        "env_var": "S3_SECURE"
-      }	 
+      } 
     ]
   },
-  "pod_patch": "[  {   \"op\": \"add\",   \"path\": \"/volumes/-\",   \"value\": {    \"name\": \"det-checkpoints\",    \"hostpath\": {     \"path\": \"/mnt/mapr_nfs/determined/det_checkpoints\",     \"type\": \"Directory\"    }   }  },  {   \"op\": \"add\",   \"path\": \"/containers/0/volumeMounts/-\",   \"value\": {    \"mountPath\": \"/determined_shared_fs\",    \"name\": \"det-checkpoints\"   }  } ]"
+  "pod_patch": "[{\"op\": \"add\",\"path\": \"/volumes/-\",\"value\": {\"name\": \"task-pv-storage\",\"persistentVolumeClaim\": {\"claimName\": \"task-det-checkpoints-pvc\"}}}, {\"op\": \"add\",\"path\": \"/containers/0/volumeMounts/-\",\"value\": {\"mountPath\": \"/determined_shared_fs\",\"name\": \"task-pv-storage\"}}]"
 }

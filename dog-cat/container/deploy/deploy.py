@@ -164,7 +164,8 @@ def upload_model_to_s3(model_name, files, bucket_name):
         endpoint_url = os.getenv("S3_ENDPOINT"),
         aws_access_key_id = os.getenv("S3_ACCESS_KEY"),
         aws_secret_access_key = os.getenv("S3_SECRET_KEY"),
-        verify = os.getenv("S3_SECURE")
+        use_ssl = False,
+        verify = False
     )
     for file in files:
         if "config" in str(file):

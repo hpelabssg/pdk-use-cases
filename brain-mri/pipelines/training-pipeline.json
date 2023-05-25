@@ -17,9 +17,9 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python train.py --git-url https://git@github.com:/hugcyrill/pdk-use-cases.git --git-ref main --sub-dir brain-mri/experiment --config const.yaml --repo brain-mri-data --model brain-mri"
+      "python train.py --git-url https://git@github.com:/hpelabssg/pdk-use-cases.git --git-ref main --sub-dir brain-mri/experiment --config const.yaml --repo brain-mri-data --model brain-mri"
     ],
-    "image": "hugcyrill/pds:train_0.0.3",
+    "image": "hpelabssg/pds:train_0.0.1",
     "secrets": [
       {
         "name": "pipeline-secret",

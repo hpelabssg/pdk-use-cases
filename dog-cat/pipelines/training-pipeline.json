@@ -17,9 +17,9 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python train.py --git-url https://git@github.com:/tybritten/pdk-use-cases.git --git-ref main --sub-dir dog-cat/experiment --config const.yaml --repo dogs-and-cats --model dogs-and-cats --project PDK"
+      "python train.py --git-url https://git@github.com:/hpelabssg/pdk-use-cases.git --git-ref main --sub-dir dog-cat/experiment --config const.yaml --repo dogs-and-cats --model dogs-and-cats --project PDK"
     ],
-    "image": "vmtyler/pdk:train_0.0.9",
+    "image": "hpelabssg/pdk:train_0.0.1",
     "secrets": [
       {
         "name": "pipeline-secret",

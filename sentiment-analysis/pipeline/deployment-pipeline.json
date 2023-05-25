@@ -18,7 +18,7 @@
     "stdin": [
       "python deploy.py --deployment-name finbert-deploy --gcs-model-bucket kserve-models"
     ],
-    "image": "hugcyrill/pdk:deploy_finbert_0.0.1",
+    "image": "hpelabssg/pdk:deploy_finbert_0.0.1",
     "secrets": [
       {
         "name": "pipeline-secret",

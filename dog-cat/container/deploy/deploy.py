@@ -31,7 +31,7 @@ from torchvision import models, transforms
 def parse_args():
     parser = argparse.ArgumentParser(description="Deploy a model to KServe")
     parser.add_argument("--deployment-name", type=str, help="Name of the resulting KServe InferenceService")
-    parser.add_argument("--cloud-model-host", type=str, help="aws and gcp supported currently for storing model artifacts", choices=['gcp', 'aws'])
+    parser.add_argument("--cloud-model-host", type=str, help="s3 and gcp supported currently for storing model artifacts", choices=['gcp', 's3'])
     parser.add_argument("--cloud-model-bucket", type=str, help="Cloud Bucket name to use for storing model artifacts")
     parser.add_argument("--google-application-credentials", type=str, help="Path to Google Application Credentials file", default=None)
     return parser.parse_args()
@@ -152,7 +152,7 @@ def upload_model(model_name, files, cloud_provider, bucket_name):
     print(f"Uploading model files to model repository to cloud provider {cloud_provider} in bucket {bucket_name}...")
     if cloud_provider.lower() == 'gcp':
         upload_model_to_gcs(model_name, files, bucket_name)
-    elif cloud_provider.lower() == 'aws':
+    elif cloud_provider.lower() == 's3':
         upload_model_to_s3(model_name, files, bucket_name)
     else:
         raise Exception(f"Invalid cloud provider {cloud_provider} specified")
@@ -160,7 +160,12 @@ def upload_model(model_name, files, cloud_provider, bucket_name):
 
 def upload_model_to_s3(model_name, files, bucket_name):
     import boto3
-    storage_client = boto3.client('s3')
+    storage_client = boto3.client('s3', 
+        endpoint_url = os.getenv("S3_ENDPOINT"),
+        aws_access_key_id = os.getenv("S3_ACCESS_KEY"),
+        aws_secret_access_key = os.getenv("S3_SECRET_KEY"),
+        verify = os.getenv("S3_SECURE")
+    )
     for file in files:
         if "config" in str(file):
             folder = "config"

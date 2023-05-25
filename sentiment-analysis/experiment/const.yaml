@@ -1,5 +1,5 @@
 name: Pipeline-Run-Finbert-1GPU
-workspace: Cyrill
+workspace: hpelabssg
 project: pipeline-finbert
 hyperparameters:
     max_seq_length: 64

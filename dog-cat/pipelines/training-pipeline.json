@@ -6,7 +6,7 @@
   "input": {
     "pfs": {
       "name": "data",
-      "repo": "dogs-and-cats",
+      "repo": "dogs-and-cats-data",
       "branch": "master",
       "glob": "/",
       "empty_files": true

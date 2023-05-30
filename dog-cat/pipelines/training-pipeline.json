@@ -44,12 +44,12 @@
       {
         "name": "pachyderm-determined-pipeline-secret",
         "key": "pachyderm_host",
-        "env_var": "PACHYDERM_HOST"
+        "env_var": "PACHD_LB_SERVICE_HOST"
       },
       {
         "name": "pachyderm-determined-pipeline-secret",
         "key": "pachyderm_port",
-        "env_var": "PACHYDERM_PORT"
+        "env_var": "PACHD_LB_SERVICE_PORT"
       }
     ]
   },

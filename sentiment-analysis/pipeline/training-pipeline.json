@@ -17,7 +17,7 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python train.py --git-url https://git@github.com:/hpelabssg/pdk-use-cases.git --git-ref main --sub-dir sentiment-analysis/experiment --config const.yaml --repo finbert-data --model finbert --project hpelabssg"
+      "python train.py --git-url https://git@github.com:/hpelabssg/pdk-use-cases.git --git-ref main --sub-dir sentiment-analysis/experiment --config const.yaml --repo finbert-data --model finbert --project pdk-finbert"
     ],
     "image": "hpelabssg/pds:train_0.0.1",
     "secrets": [

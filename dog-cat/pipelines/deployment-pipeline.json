@@ -16,7 +16,7 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python deploy.py --deployment-name dogcat-deploy --cloud-model-bucket kserve-models --cloud-model-host s3"
+      "python deploy.py --deployment-name dogs-and-cats --cloud-model-bucket kserve-models --cloud-model-host s3"
     ],
     "image": "hpelabssg/pdk:deploy_0.0.1",
     "secrets": [

@@ -1,6 +1,6 @@
 name: Pipeline-Run-Brain-MRI-1GPU
 workspace: hpelabssg
-project: pipeline-brain-mri
+project: pdk-brain-mri
 profiling:
   enabled: true
 data:

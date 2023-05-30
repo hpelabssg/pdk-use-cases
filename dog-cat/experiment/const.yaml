@@ -1,6 +1,6 @@
 name: Pipeline-Run-DogCat-1GPU
 workspace: hpelabssg
-project: pipeline-dogs-and-cats
+project: pdk-dogs-and-cats
 profiling:
   enabled: true
 data:

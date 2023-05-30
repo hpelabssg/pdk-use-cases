@@ -1,6 +1,6 @@
 name: Pipeline-Run-Finbert-1GPU
 workspace: hpelabssg
-project: pipeline-finbert
+project: pdk-finbert
 profiling:
     enabled: true
 hyperparameters:

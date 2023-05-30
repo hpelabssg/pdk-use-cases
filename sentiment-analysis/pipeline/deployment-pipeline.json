@@ -16,7 +16,7 @@
       "/bin/sh"
     ],
     "stdin": [
-      "python deploy.py --deployment-name finbert-deploy --cloud-model-bucket kserve-models --cloud-model-host s3"
+      "python deploy.py --deployment-name finbert --cloud-model-bucket kserve-models --cloud-model-host s3"
     ],
     "image": "hpelabssg/pdk:deploy_finbert_0.0.1",
     "secrets": [
